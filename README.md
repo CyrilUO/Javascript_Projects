@@ -1,10 +1,31 @@
 # Javascript_Projects
+Several Javascript Projects To Be Done :
 
-Several Javascript Projects :
+      👶 BEGINNER PROJECT 👶
+      
+🔘 Calculator with dark mode toggle ✅
+🔘 Connect 4 ❌
+🔘 Random Password Generator ⏳
+🔘 Personal Loader ❌
+🔘 Rock Paper Scisors ❌
+🔘 Random Color Generator (hexadecimal) ❌
+🔘 Personal Stopwatch ❌
+🔘 Customized Calendar ❌
+🔘 English Dictionnary ❌
+🔘 Personal Picture Carrousel ❌
+🔘 Weather application ❌
 
-* Calculator  [x]
-* Connect 4   [ ]
-*
-*
+    🧑‍💻 Intermediary Projects 🧑‍💻
+    
+🔘
+🔘
+🔘
 
+      🥷 Advanced Projects 🥷
+      
+🔘
+🔘
+🔘
 
+  🛸 For more project inspiration 🛸
+➡️ https://www.100jsprojects.com/projects
