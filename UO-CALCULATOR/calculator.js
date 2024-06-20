@@ -4,6 +4,7 @@ const displayer = document.getElementById("display");
 --> ADD A FUNCTION TO CHANGE KEY BACKGROUND ON KEYDOWN 
 --> ADD OTHER FUNCTIONALITIES LIKE ^ & %
 --> ADD CALCULATION HISTORY 
+--> MAKE IT A DESKTOP APP 
 */
 
 function resetCalculator() {
