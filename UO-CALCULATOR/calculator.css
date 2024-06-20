@@ -189,13 +189,13 @@ label {
 .fa-regular.fa-moon{
   margin-top: 10px;
   margin-left: 35px;
-  font-size: 20px; /* Taille de l'icône */
-  color: white; /* Couleur de l'icône */
+  font-size: 20px; 
+  color: white; 
 }
 
 .fa-regular.fa-sun{
   margin-top: 10px;
   margin-left: 35px;
-  font-size: 20px; /* Taille de l'icône */
+  font-size: 20px; 
   color: #1e1e1e; 
 }
