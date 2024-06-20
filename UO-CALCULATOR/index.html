@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator UO</title>
+    <link rel="stylesheet" href="calculator.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Permanent+Marker&display=swap" rel="stylesheet">  
+    <link rel="icon" type="image/x-icon" href="images/calculator.png">
+  </head>
+  <body>
+    <div class="wrapperBoxGlobal">
+      <div class="wrapper">
+        <input type="checkbox" onchange="setTheme()" class="checkbox" id="box" />
+        <label for="box"></label>
+      </div>
+      <i class="fa-regular fa-moon"></i>
+      <i class="fa-regular fa-sun"></i>
+    </div>
+    
+    <div class="orangeBorder">
+      <div id="logic_wrapper">
+        <h2>Calculator UO</h2>
+        <input id="display" type="text" readonly />
+        <div id="keys">
+          <button onclick="resetCalculator()" class="round grey" id="reset_btn">
+            &#10226;
+          </button>
+          <button
+            onclick="suppressPreviousInput()"
+            class="round orange"
+            id="btn"
+          >
+            &#8592;
+          </button>
+          <button onclick="appendToDisplay('.')" class="round orange" id="btn">
+            .
+          </button>
+          <button onclick="appendToDisplay('+')" class="round orange" id="btn">
+            +
+          </button>
+          <button onclick="appendToDisplay('7')" class="round dark" id="btn">
+            7
+          </button>
+          <button onclick="appendToDisplay('8')" class="round dark" id="btn">
+            8
+          </button>
+          <button onclick="appendToDisplay('9')" class="round dark" id="btn">
+            9
+          </button>
+
+          <button onclick="appendToDisplay('-')" class="round orange" id="btn">
+            -
+          </button>
+
+          <button onclick="appendToDisplay('4')" class="round dark" id="btn">
+            4
+          </button>
+          <button onclick="appendToDisplay('5')" class="round dark" id="btn">
+            5
+          </button>
+          <button onclick="appendToDisplay('6')" class="round dark" id="btn">
+            6
+          </button>
+          <button onclick="appendToDisplay('*')" class="round orange" id="btn">
+            x
+          </button>
+          <button onclick="appendToDisplay('1')" class="round dark" id="btn">
+            1
+          </button>
+          <button onclick="appendToDisplay('2')" class="round dark" id="btn">
+            2
+          </button>
+          <button onclick="appendToDisplay('3')" class="round dark" id="btn">
+            3
+          </button>
+          <button onclick="appendToDisplay('/')" class="round orange" id="btn">
+            /
+          </button>
+          <button
+            onclick="appendToDisplay('0')"
+            class="dark itemCentered"
+            id="btn"
+          >
+            0
+          </button>
+          <button onclick="calculate()" class="round orange" id="btn">=</button>
+        </div>
+      </div>
+    </div>
+  
+
+    <script src="calculator.js"></script>
+  </body>
+</html>
