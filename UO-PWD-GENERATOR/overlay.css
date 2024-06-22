@@ -1,0 +1,27 @@
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  display: none; /* Initialement caché */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Assure que l'overlay est au-dessus du contenu */
+}
+
+.loader {
+  border: 6px solid rgba(255, 255, 255, 0.3); /* Couleur de la bordure */
+  border-radius: 50%;
+  border-top: 6px solid white; /* Couleur du loader */
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* Animation de rotation */
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

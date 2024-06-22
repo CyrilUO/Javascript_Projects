@@ -6,7 +6,8 @@ body {
   align-items: center;
   min-height: 100vh;
   background: url(/images/synthwave-electro-4k-co.jpg);
-  background-position-y: 50%;
+  background-position-y: 0%;
+  background-size: cover;
   overflow: hidden;
 }
 

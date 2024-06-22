@@ -39,8 +39,6 @@ document.addEventListener("DOMContentLoaded", updateLengthDisplay);
 function setPasswordConfig() {}
 
 function setNewBackground() {
-  let lastBackgroundIndex = null;
-
   const imageBank = [
     "images/mountain_cover.jpg",
     "images/space3.jpg",
@@ -54,6 +52,7 @@ function setNewBackground() {
     "images/towers2.jpg",
   ];
 
+  let lastBackgroundIndex = null;
   let randomIndex;
 
   do {
