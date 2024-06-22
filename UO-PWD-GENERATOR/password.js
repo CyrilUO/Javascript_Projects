@@ -30,9 +30,11 @@ function displayPassword() {
 
 function updateLengthDisplay() {
   const lengthElement = document.getElementById("length");
-  const lengthValueElement = document.getElementById("length_value");
+  const lengthValueElement = document.getElementById("lengthDisplay");
   lengthValueElement.textContent = lengthElement.value;
 }
+
+document.addEventListener("DOMContentLoaded", updateLengthDisplay);
 
 function setPasswordConfig() {}
 
