@@ -1,186 +1,177 @@
 /* https://devdevout.com/css/css-animated-backgrounds */
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(/images/synthwave-electro-4k-co.jpg);
+  background-position-y: 50%;
+  overflow: hidden;
+}
 
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url(/images/synthwave-electro-4k-co.jpg);
-    background-position-y: 50%;
-    overflow: hidden;
-  }
-  
-  .stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 120%;
-    transform: rotate(-45deg);
-    z-index: -5;
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  transform: rotate(-45deg);
+  z-index: -5;
+}
 
+.star {
+  --star-color: var(--primary-color);
+  --star-tail-length: 6em;
+  --star-tail-height: 2px;
+  --star-width: calc(var(--star-tail-length) / 6);
+  --fall-duration: 9s;
+  --tail-fade-duration: var(--fall-duration);
+  z-index: -5;
+
+  position: absolute;
+  top: var(--top-offset);
+  left: 0;
+  width: var(--star-tail-length);
+  height: var(--star-tail-height);
+  color: var(--star-color);
+  background: linear-gradient(45deg, white, transparent);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 6px white);
+  transform: translate3d(104em, 0, 0);
+  animation: fall var(--fall-duration) var(--fall-delay) linear infinite,
+    tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
+}
+
+.star:nth-child(1) {
+  --star-tail-length: 5em;
+  --top-offset: 0vh;
+  --fall-duration: 6s;
+  --fall-delay: 0s;
+  z-index: -5;
+}
+
+.star:nth-child(2) {
+  --star-tail-length: 7.5em;
+  --top-offset: 150vh;
+  --fall-duration: 12s;
+  --fall-delay: 5s;
+  z-index: -5;
+}
+.star:nth-child(3) {
+  --star-tail-length: 2.5em;
+  --top-offset: 50vh;
+  --fall-duration: 12s;
+  --fall-delay: 15s;
+  z-index: -5;
+}
+.star:nth-child(4) {
+  --star-tail-length: 7.5em;
+  --top-offset: 10vh;
+  --fall-duration: 12s;
+  --fall-delay: 5s;
+  z-index: -5;
+}
+
+.star:nth-child(5) {
+  --star-tail-length: 7.5em;
+  --top-offset: 115vh;
+  --fall-duration: 12s;
+  --fall-delay: 5s;
+  z-index: -5;
+}
+
+.star:nth-child(6) {
+  --star-tail-length: 8.5em;
+  --top-offset: 25vh;
+  --fall-duration: 10s;
+  --fall-delay: 5s;
+  z-index: -5;
+}
+
+.star:nth-child(7) {
+  --star-tail-length: 14.5em;
+  --top-offset: 75vh;
+  --fall-duration: 10s;
+  --fall-delay: 15s;
+  z-index: -5;
+}
+
+.star:nth-child(8) {
+  --star-tail-length: 4.5em;
+  --top-offset: 65vh;
+  --fall-duration: 17s;
+  --fall-delay: 8s;
+  z-index: -5;
+}
+
+.star:nth-child(9) {
+  --star-tail-length: 4.5em;
+  --top-offset: 55vh;
+  --fall-duration: 13s;
+  --fall-delay: 15s;
+  z-index: -5;
+}
+
+.star:nth-child(10) {
+  --star-tail-length: 4.5em;
+  --top-offset: 35vh;
+  --fall-duration: 7s;
+  --fall-delay: 15s;
+  z-index: -5;
+}
+
+/* Ajoutez ici les règles pour les 48 étoiles restantes en modifiant les variables pour chaque étoile */
+
+.star::before,
+.star::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: calc(var(--star-width) / -2);
+  width: var(--star-width);
+  height: 100%;
+  background: linear-gradient(45deg, transparent, white, transparent);
+  border-radius: inherit;
+  animation: blink 2s linear infinite;
+  z-index: -5;
+}
+
+.star::before {
+  transform: rotate(45deg);
+}
+
+.star::after {
+  transform: rotate(-45deg);
+}
+
+@keyframes fall {
+  to {
+    transform: translate3d(-30em, 0, 0);
   }
-  
-  .star {
-    --star-color: var(--primary-color);
-    --star-tail-length: 6em;
-    --star-tail-height: 2px;
-    --star-width: calc(var(--star-tail-length) / 6);
-    --fall-duration: 9s;
-    --tail-fade-duration: var(--fall-duration);
-    z-index: -5;
-  
-    position: absolute;
-    top: var(--top-offset);
-    left: 0;
+}
+
+@keyframes tail-fade {
+  0%,
+  50% {
     width: var(--star-tail-length);
-    height: var(--star-tail-height);
-    color: var(--star-color);
-    background: linear-gradient(45deg, white, transparent);
-    border-radius: 50%;
-    filter: drop-shadow(0 0 6px white);
-    transform: translate3d(104em, 0, 0);
-    animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
+    opacity: 1;
   }
 
-  
-  .star:nth-child(1) {
-    --star-tail-length: 5em;
-    --top-offset: 0vh;
-    --fall-duration: 6s;
-    --fall-delay: 0s;
-    z-index: -5;
-
-  }
-  
-  .star:nth-child(2) {
-    --star-tail-length: 7.5em;
-    --top-offset: 150vh;
-    --fall-duration: 12s;
-    --fall-delay: 5s;
-    z-index: -5;
-
-  }
-  .star:nth-child(3) {
-    --star-tail-length: 2.5em;
-    --top-offset: 50vh;
-    --fall-duration: 12s;
-    --fall-delay: 15s;
-    z-index: -5;
-  }
-  .star:nth-child(4) {
-    --star-tail-length: 7.5em;
-    --top-offset: 10vh;
-    --fall-duration: 12s;
-    --fall-delay: 5s;
-    z-index: -5;
-
+  70%,
+  80% {
+    width: 0;
+    opacity: 0.4;
   }
 
-  .star:nth-child(5) {
-    --star-tail-length: 7.5em;
-    --top-offset: 115vh;
-    --fall-duration: 12s;
-    --fall-delay: 5s;
-    z-index: -5;
-
+  100% {
+    width: 0;
+    opacity: 0;
   }
+}
 
-  .star:nth-child(6) {
-    --star-tail-length: 8.5em;
-    --top-offset: 25vh;
-    --fall-duration: 10s;
-    --fall-delay: 5s;
-    z-index: -5;
-
+@keyframes blink {
+  50% {
+    opacity: 0.6;
   }
-
-  .star:nth-child(7) {
-    --star-tail-length: 14.5em;
-    --top-offset: 75vh;
-    --fall-duration: 10s;
-    --fall-delay: 15s;
-    z-index: -5;
-  }
-
-  .star:nth-child(8) {
-    --star-tail-length: 4.5em;
-    --top-offset: 65vh;
-    --fall-duration: 17s;
-    --fall-delay: 8s;
-    z-index: -5;
-  }
-
-  .star:nth-child(9) {
-    --star-tail-length: 4.5em;
-    --top-offset: 55vh;
-    --fall-duration: 13s;
-    --fall-delay: 15s;
-    z-index: -5;
-  }
-
-
-  .star:nth-child(10) {
-    --star-tail-length: 4.5em;
-    --top-offset: 35vh;
-    --fall-duration: 7s;
-    --fall-delay: 15s;
-    z-index: -5;
-  }
-
-
-
-  /* Ajoutez ici les règles pour les 48 étoiles restantes en modifiant les variables pour chaque étoile */
-  
-  .star::before, .star::after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: calc(var(--star-width) / -2);
-    width: var(--star-width);
-    height: 100%;
-    background: linear-gradient(45deg, transparent, white, transparent);
-    border-radius: inherit;
-    animation: blink 2s linear infinite;
-    z-index: -5;
-
-  }
-  
-  .star::before {
-    transform: rotate(45deg);
-  }
-  
-  .star::after {
-    transform: rotate(-45deg);
-  }
-  
-  @keyframes fall {
-    to {
-      transform: translate3d(-30em, 0, 0);
-    }
-  }
-  
-  @keyframes tail-fade {
-    0%, 50% {
-      width: var(--star-tail-length);
-      opacity: 1;
-    }
-  
-    70%, 80% {
-      width: 0;
-      opacity: 0.4;
-    }
-  
-    100% {
-      width: 0;
-      opacity: 0;
-    }
-  }
-  
-  @keyframes blink {
-    50% {
-      opacity: 0.6;
-    }
-  }
-  
+}
