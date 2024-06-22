@@ -46,6 +46,12 @@ function setNewBackground() {
     "images/space3.jpg",
     "images/synthwave-electro-4k-co.jpg",
     "images/synthwave3.jpg",
+    "images/bard.jpg",
+    "images/moon1.webp",
+    "images/moon2.png",
+    "images/moon3.jpg",
+    "images/towers.jpg",
+    "images/towers2.jpg",
   ];
 
   let randomIndex;
