@@ -1,32 +1,4 @@
-function generateRandomPassword(length) {
-  let chars =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?";
-
-  let password = "";
-
-  for (let i = 0; i < length; i++) {
-    const randomChar = Math.floor(Math.random() * chars.length);
-    password += chars[randomChar];
-    console.log(password);
-  }
-
-  return password;
-}
-
-function displayPassword() {
-  let displayPassword = document.getElementById("pwd_input_displayer");
-  let lengthElement = document.getElementById("length");
-  let length = parseInt(lengthElement.value);
-
-  const password = generateRandomPassword(length);
-
-  if (displayPassword) {
-    displayPassword.value = password;
-  } else if (error) {
-    console.error("Element with the specified ID was not found.");
-    displayPassword.value = error;
-  }
-}
+document.addEventListener("DOMContentLoaded", updateLengthDisplay);
 
 function updateLengthDisplay() {
   const lengthElement = document.getElementById("length");
@@ -34,9 +6,49 @@ function updateLengthDisplay() {
   lengthValueElement.textContent = lengthElement.value;
 }
 
-document.addEventListener("DOMContentLoaded", updateLengthDisplay);
+function generateRandomPassword(length) {
+  const lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
+  const upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const numberChars = "0123456789";
+  const symbolChars = "!@#$%^&*()_-+=<>?";
 
-function setPasswordConfig() {}
+  const includeLowerCase = document.getElementById("lowerCase").checked;
+  const includeUpperCase = document.getElementById("upperCase").checked;
+  const includeNumbers = document.getElementById("numbers").checked;
+  const includeSymbols = document.getElementById("symbols").checked;
+
+  let characterSet = "";
+  if (includeLowerCase) characterSet += lowerCaseChars;
+  if (includeUpperCase) characterSet += upperCaseChars;
+  if (includeNumbers) characterSet += numberChars;
+  if (includeSymbols) characterSet += symbolChars;
+
+  if (characterSet === "") {
+    displayWarningOverlay();
+    return;
+  }
+
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    const randomChar = Math.floor(Math.random() * characterSet.length);
+    password += characterSet[randomChar];
+  }
+
+  return password;
+}
+
+function displayPassword() {
+  const lengthElement = document.getElementById("length");
+  const length = parseInt(lengthElement.value);
+  const password = generateRandomPassword(length);
+
+  const displayPassword = document.getElementById("pwd_input_displayer");
+  if (displayPassword) {
+    displayPassword.value = password;
+  } else {
+    console.error("Element with the specified ID was not found.");
+  }
+}
 
 function setNewBackground() {
   const imageBank = [
@@ -65,3 +77,14 @@ function setNewBackground() {
 
   lastBackgroundIndex = randomIndex;
 }
+
+let overlay = document.getElementById("overlay");
+overlay.style.display = "none";
+
+displayWarningOverlay = () => {
+  overlay.style.display = "flex";
+};
+
+returnHome = () => {
+  overlay.style.display = "none";
+};
