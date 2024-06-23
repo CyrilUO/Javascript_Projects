@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   updateLengthDisplay();
+  clipBoardInteract();
+  checkboxSoundEffects();
 });
 
 /******** Password conception logic *********/
@@ -169,7 +171,7 @@ function toggleMusicAndSwitchIcon() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function checkboxSoundEffects() {
   const sfxEffect = document.querySelector(
     '.js_sfx_handler[src="sound/glitch-sound-fx-pack-04-118236.mp3"]'
   );
@@ -209,12 +211,34 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.error("SFX audio element not found.");
   }
-});
+}
 
 /******** Password copying into clipBoard logic *********/
 
-/* function clipBoardInteract() {
+function clipBoardInteract() {
+  const clipboardIcon = document.getElementById("js_copy_password");
+  const passwordInput = document.getElementById("pwd_input_displayer");
 
+  if (clipboardIcon && passwordInput) {
+    clipboardIcon.addEventListener("click", function () {
+      if (passwordInput.value.trim() !== "") {
+        passwordInput.select();
+        passwordInput.setSelectionRange(0, 9999);
+
+        navigator.clipboard
+          .writeText(passwordInput.value)
+          .then(() => {
+            alert("Password successfully copied! 😇");
+          })
+          .catch((error) => {
+            console.error("Error while copying your password:", error);
+            alert("Your password couldn't be copied.");
+          });
+      } else {
+        alert("No password to copy!");
+      }
+    });
+  } else {
+    console.error("Clipboard icon or password input not found.");
+  }
 }
-
-*/
