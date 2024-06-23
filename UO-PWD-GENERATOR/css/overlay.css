@@ -25,3 +25,12 @@
     transform: rotate(360deg);
   }
 }
+
+.global_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fa-light fa-clipboard;

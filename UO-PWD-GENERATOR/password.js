@@ -1,4 +1,8 @@
-document.addEventListener("DOMContentLoaded", updateLengthDisplay);
+document.addEventListener("DOMContentLoaded", function () {
+  updateLengthDisplay();
+});
+
+/******** Password conception logic *********/
 
 function updateLengthDisplay() {
   const lengthElement = document.getElementById("length");
@@ -25,7 +29,7 @@ function generateRandomPassword(length) {
 
   if (characterSet === "") {
     displayWarningOverlay();
-    return;
+    return null;
   }
 
   let password = "";
@@ -49,6 +53,8 @@ function displayPassword() {
     console.error("Element with the specified ID was not found.");
   }
 }
+
+/******** Background Setting Logic *********/
 
 function setNewBackground() {
   const imageBank = [
@@ -78,13 +84,61 @@ function setNewBackground() {
   lastBackgroundIndex = randomIndex;
 }
 
+/******** Error overlay logic *********/
+
 let overlay = document.getElementById("overlay");
 overlay.style.display = "none";
 
-displayWarningOverlay = () => {
+function displayWarningOverlay() {
   overlay.style.display = "flex";
-};
+}
 
-returnHome = () => {
+function returnHome() {
   overlay.style.display = "none";
-};
+}
+
+/******** Music toggle logic *********/
+
+let isMusicPlayed;
+const audioRadio = document.querySelector(
+  ".js_audio_handler[src='sound/Free Synthwave Music - Miami Sky No Copyright Music.mp3']"
+);
+
+let musicStateIcon = document.getElementById(".js_iconChanger");
+
+function toggleMusicAndSwitchIcon() {
+  const audioRadio = document.querySelector(
+    ".js_audio_handler[src='sound/Free Synthwave Music - Miami Sky No Copyright Music.mp3']"
+  );
+
+  if (audioRadio) {
+    if (audioRadio.paused) {
+      audioRadio
+        .play()
+        .then(() => {
+          isMusicPlayed = true;
+          musicStateIcon.classList.remove("fa-play");
+          musicStateIcon.classList.add("fa-pause");
+        })
+        .catch((error) => {
+          console.error("Error playing audio:", error);
+          alert("Error playing audio: " + error);
+        });
+    } else {
+      audioRadio.pause();
+      musicStateIcon.classList.remove("fa-pause");
+      musicStateIcon.classList.add("fa-play");
+      isMusicPlayed = false;
+    }
+  } else {
+    console.error("Audio element not found.");
+  }
+}
+
+/******** Password copying into clipBoard logic *********/
+
+/* function clipBoardInteract() {
+
+}
+
+*/
