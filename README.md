@@ -4,11 +4,11 @@
                                           👶 BEGINNER PROJECT 👶
       
                                 🔘 Calculator with dark mode toggle ✅
-                                🔘 Random Password Generator ⏳
+                                🔘 Random Password Generator ✅
                                 🔘 Personal Loader ❌
                                 🔘 Rock Paper Scisors ❌
                                 🔘 Random Color Generator (hexadecimal) ❌
-                                🔘 Personal Stopwatch ❌
+                                🔘 Personal Stopwatch ⏳
                                 🔘 Customized Calendar ❌
                                 🔘 Personal Picture Carrousel ❌
                                 🔘 Weather application ❌
