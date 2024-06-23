@@ -16,27 +16,61 @@ function generateRandomPassword(length) {
   const numberChars = "0123456789";
   const symbolChars = "!@#$%^&*()_-+=<>?";
 
-  const includeLowerCase = document.getElementById("lowerCase").checked;
-  const includeUpperCase = document.getElementById("upperCase").checked;
-  const includeNumbers = document.getElementById("numbers").checked;
-  const includeSymbols = document.getElementById("symbols").checked;
-
+  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
   let characterSet = "";
-  if (includeLowerCase) characterSet += lowerCaseChars;
-  if (includeUpperCase) characterSet += upperCaseChars;
-  if (includeNumbers) characterSet += numberChars;
-  if (includeSymbols) characterSet += symbolChars;
+  const requiredChars = [];
+
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      switch (checkbox.id) {
+        case "lowerCase":
+          characterSet += lowerCaseChars;
+          requiredChars.push(
+            lowerCaseChars[Math.floor(Math.random() * lowerCaseChars.length)]
+          );
+          break;
+        case "upperCase":
+          characterSet += upperCaseChars;
+          requiredChars.push(
+            upperCaseChars[Math.floor(Math.random() * upperCaseChars.length)]
+          );
+          break;
+        case "numbers":
+          characterSet += numberChars;
+          requiredChars.push(
+            numberChars[Math.floor(Math.random() * numberChars.length)]
+          );
+          break;
+        case "symbols":
+          characterSet += symbolChars;
+          requiredChars.push(
+            symbolChars[Math.floor(Math.random() * symbolChars.length)]
+          );
+          break;
+      }
+    }
+  });
 
   if (characterSet === "") {
     displayWarningOverlay();
     return null;
   }
 
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    const randomChar = Math.floor(Math.random() * characterSet.length);
-    password += characterSet[randomChar];
+  if (requiredChars.length > length) {
+    alert("The selected options require a longer password length.");
+    return null;
   }
+
+  let password = requiredChars.join("");
+
+  for (let i = password.length; i < length; i++) {
+    password += characterSet[Math.floor(Math.random() * characterSet.length)];
+  }
+
+  password = password
+    .split("")
+    .sort(() => Math.random() - 0.5)
+    .join("");
 
   return password;
 }
@@ -104,13 +138,11 @@ const audioRadio = document.querySelector(
   ".js_audio_handler[src='sound/Free Synthwave Music - Miami Sky No Copyright Music.mp3']"
 );
 
-let musicStateIcon = document.getElementById(".js_iconChanger");
+let musicStateIcon = document.getElementById("js_iconChanger");
+
+let musicStateText = document.querySelector("#musicStateText");
 
 function toggleMusicAndSwitchIcon() {
-  const audioRadio = document.querySelector(
-    ".js_audio_handler[src='sound/Free Synthwave Music - Miami Sky No Copyright Music.mp3']"
-  );
-
   if (audioRadio) {
     if (audioRadio.paused) {
       audioRadio
@@ -119,6 +151,7 @@ function toggleMusicAndSwitchIcon() {
           isMusicPlayed = true;
           musicStateIcon.classList.remove("fa-play");
           musicStateIcon.classList.add("fa-pause");
+          musicStateText.textContent = "Pause Music";
         })
         .catch((error) => {
           console.error("Error playing audio:", error);
@@ -129,11 +162,54 @@ function toggleMusicAndSwitchIcon() {
       musicStateIcon.classList.remove("fa-pause");
       musicStateIcon.classList.add("fa-play");
       isMusicPlayed = false;
+      musicStateText.textContent = "Play Music";
     }
   } else {
     console.error("Audio element not found.");
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sfxEffect = document.querySelector(
+    '.js_sfx_handler[src="sound/glitch-sound-fx-pack-04-118236.mp3"]'
+  );
+
+  // S'assurer que l'élément audio est présent
+  if (sfxEffect) {
+    sfxEffect.style.visibility = "hidden";
+
+    function checkboxSound() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", () => {
+          sfxEffect.currentTime = 0; // Reset le temps de lecture pour permettre une lecture répétée rapide
+          sfxEffect.play().catch((error) => {
+            console.error("Error playing checkbox sound:", error);
+          });
+
+          if (checkbox.checked) {
+            checkbox.classList.add("checkbox-animation-x");
+          } else {
+            checkbox.classList.add("checkbox-animation-y");
+          }
+
+          // Suppression de l'animation après qu'elle se soit terminée
+          checkbox.addEventListener("animationend", () => {
+            checkbox.classList.remove(
+              "checkbox-animation-x",
+              "checkbox-animation-y"
+            );
+          });
+        });
+      });
+    }
+
+    checkboxSound();
+  } else {
+    console.error("SFX audio element not found.");
+  }
+});
 
 /******** Password copying into clipBoard logic *********/
 
